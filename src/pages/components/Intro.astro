@@ -1,0 +1,125 @@
+---
+import avatar from "/avatar.jpg";
+---
+
+<div class="relative mx-12 flex justify-around flex-col lg:flex-row gap-y-4">
+  <div class="lg:w-1/2 space-y-2">
+    <h1 class="text-2xl sm:text-5xl font-semibold">
+      Hey, I’m a Frontend Web Developer from India.
+    </h1>
+    <div class="relative">
+      <svg class="absolute h-full w-full overflow-visible">
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style={{ stopColor: "#DC3A2B", stopOpacity: 1 }}
+            ></stop>
+            <stop offset="100%" style={{ stopColor: "#E18510", stopOpacity: 1 }}
+            ></stop>
+          </linearGradient>
+        </defs>
+        <path
+          id="border-path"
+          fill="none"
+          stroke="url(#gradient)"
+          stroke-width="4"></path>
+      </svg>
+
+      <p id="anim-p" class="p-6 sm:text-lg">
+        Hey there, I’m Sukrit, a frontend web developer from India. I’m
+        passionate about creating captivating user experiences through seamless
+        animations and transitions. <br /> Lately, I’ve been diving into the world
+        of full-stack development, focusing on the <span class="font-bold"
+          >T3 stack</span
+        >. I’m driven to expand my skills and bring innovative solutions to the
+        web development landscape. Exciting times ahead! <br />
+        <br />I am currently at an intermediate level in <span class="font-bold"
+          >Next.js</span
+        >, continuously expanding my knowledge through hands-on projects and
+        daily learning.
+      </p>
+    </div>
+
+    <div
+      class="flex justify-center pt-12 text-center xl:gap-16 mb-12 flex-wrap"
+    >
+      <div class="w-32">
+        <h2>Projects</h2>
+        <p id="project-counter" class="text-xl font-bold">10</p>
+      </div>
+      <div class="w-32">
+        <h2>Github Stars</h2>
+        <p id="github-stars-counter" class="text-xl font-bold">12</p>
+      </div>
+      <div class="w-32">
+        <h2>Skills</h2>
+        <p id="skills-counter" class="text-xl font-bold">15</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative flex justify-center">
+    <img
+      src={avatar}
+      alt="Sukrit's Picture"
+      class="rounded-md h-96 w-96 object-cover"
+    />
+  </div>
+</div>
+
+<style>
+  #border-path {
+    animation: draw 1s forwards 1s ease-out;
+  }
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
+
+<script>
+  const updatePath = () => {
+    const textMain = document.querySelector("#anim-p") as HTMLElement;
+    const path = document.querySelector("#border-path") as SVGPathElement;
+
+    if (textMain && path) {
+      path.setAttribute(
+        "d",
+        `M0,0 V${textMain.offsetHeight} H${textMain.offsetWidth} v${
+          textMain.offsetHeight / 2
+        }`
+      );
+    }
+
+    const pathLength = path.getTotalLength();
+    path.style.strokeDasharray = pathLength.toString();
+    path.style.strokeDashoffset = pathLength.toString();
+  };
+
+  const incrementCounter = (
+    selector: string,
+    current: number,
+    target: number,
+    duration: number,
+    letter: string = ""
+  ) => {
+    let counter = document.getElementById(selector);
+    let stepTime = Math.abs(Math.floor(duration / target));
+
+    if (current < target && counter) {
+      current++;
+      counter.innerText = current.toString() + letter;
+      setTimeout(
+        () => incrementCounter(selector, current, target, duration, letter),
+        stepTime
+      );
+    }
+  };
+
+  incrementCounter("project-counter", 0, 48, 1000, "+");
+  incrementCounter("github-stars-counter", 0, 13, 1000, "+");
+  incrementCounter("skills-counter", 0, 20, 1000, "+");
+
+  window.addEventListener("DOMContentLoaded", updatePath);
+  window.addEventListener("resize", updatePath);
+</script>

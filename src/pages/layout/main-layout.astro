@@ -1,0 +1,21 @@
+---
+import Navbar from "../components/Navbar";
+import "@fontsource-variable/josefin-sans";
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta title={title} />
+    <meta name="description" content="Learning astro is fun." />
+  </head>
+  <body>
+    <Navbar client:load />
+    <div class="my-12">
+      <slot />
+    </div>
+  </body>
+</html>
