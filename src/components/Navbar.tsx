@@ -13,7 +13,7 @@ const Navbar = () => {
         <img
           src={avatar}
           alt="Sukrit's profile picture"
-          className="h-12 w-12 rounded-full object-cover"
+          className="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover"
         />
       </a>
 

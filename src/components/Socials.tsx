@@ -5,7 +5,7 @@ import { navMotion, socialItemMotion, socials } from "../config";
 const Socials = () => {
   return (
     <motion.div
-      className="flex justify-center gap-12 w-full"
+      className="flex justify-center gap-12 w-full flex-wrap mx-12"
       variants={navMotion}
       animate="visible"
       initial="hidden"
