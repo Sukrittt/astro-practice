@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import avatar from "/avatar.jpg";
-import { itemMotion, navMotion } from "../../config";
+import { itemMotion, navMotion } from "../config";
 
 const Navbar = () => {
   const [toggled, setToggled] = useState(false);

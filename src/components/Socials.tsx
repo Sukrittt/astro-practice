@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import { navMotion, socialItemMotion, socials } from "../../config";
+import { navMotion, socialItemMotion, socials } from "../config";
 
 const Socials = () => {
   return (
